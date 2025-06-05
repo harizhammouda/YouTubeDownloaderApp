@@ -32,7 +32,8 @@ This project relies on the following Python libraries:
 For a ready-to-use version, download the latest release:
 
  [Download v2.0 exe]((https://drive.google.com/file/d/1mqNXeXlHAOfUMqE3IL2-DI4ZSkqV0Y8w/view?usp=drive_link))
-##🚀 How to Use
+ 
+## 🚀 How to Use
 1. Enter Video URL: Paste a YouTube link in the "Video URL" field. 🔗
 2. Select File Type: Choose between MP4 (video) or MP3 (audio) from the dropdown. 🎥🎵
 3. Set Quality: For MP4, select the desired video quality (e.g., 720p). 📏
@@ -40,7 +41,7 @@ For a ready-to-use version, download the latest release:
 5. Download: Click the "Download" button to start the process. ⬇️
 6. Contribute: Use the "Contribute" tab to send logs or ideas. 🤝
 
-##✔📝 Project Structure
+## ✔📝 Project Structure
   . main.py: The main application script. 🐍
   . img/: Contains the app icon (download.ico). 🎨
   . ffmpeg.exe and yt-dlp.exe: Executables for video processing and downloading. ⚙️
