@@ -40,17 +40,17 @@ For a ready-to-use version, download the latest release:
 5. Download: Click the "Download" button to start the process. ⬇️
 6. Contribute: Use the "Contribute" tab to send logs or ideas. 🤝
 
-✔📝 Project Structure
- . main.py: The main application script. 🐍
- . img/: Contains the app icon (download.ico). 🎨
- . ffmpeg.exe and yt-dlp.exe: Executables for video processing and downloading. ⚙️
- . debug_log.txt: Log file stored in AppData\Local\YouTubeDownloader. 📋
+##✔📝 Project Structure
+  . main.py: The main application script. 🐍
+  . img/: Contains the app icon (download.ico). 🎨
+  . ffmpeg.exe and yt-dlp.exe: Executables for video processing and downloading. ⚙️
+  . debug_log.txt: Log file stored in AppData\Local\YouTubeDownloader. 📋
  
-✔🌍 Languages
- . English and Arabic are supported in the interface. 🇺🇸🇩🇿
- . Future updates may include more languages! 🌐
+##✔🌍 Languages
+  . English and Arabic are supported in the interface. 🇺🇸🇩🇿
+  . Future updates may include more languages! 🌐
 
-✔🤝 Contribute
+##✔🤝 Contribute
  Feel free to fork this repository, submit issues, or send pull requests! Your feedback is valuable! 🙌
  
    [📞Contact the developer]((https://hammouda-h.devunion.dev/))
