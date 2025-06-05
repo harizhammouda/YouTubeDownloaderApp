@@ -55,4 +55,4 @@ For a ready-to-use version, download the latest release:
  Feel free to fork this repository, submit issues, or send pull requests! Your feedback is valuable! 🙌
  
 ## [📞Contact the developer](https://hammouda-h.devunion.dev/)
- ## thank you
+ # thank you
