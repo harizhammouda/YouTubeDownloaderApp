@@ -26,8 +26,32 @@ This project relies on the following Python libraries:
 - Python 3.8+
 - Install dependencies using:
   ```bash
-  pip install customtkinter yt-dlp requests
-Download Executable
+  pip install customtkinter yt-dlp requests pyperclip
+📌 Note: Place ffmpeg.exe and yt-dlp.exe in the same folder as the .exe file to ensure functionality.
+✔ Download Executable📥
 For a ready-to-use version, download the latest release:
 
-Download v1.0 
+ [Download v2.0 exe]((https://drive.google.com/file/d/1mqNXeXlHAOfUMqE3IL2-DI4ZSkqV0Y8w/view?usp=drive_link))
+##🚀 How to Use
+1. Enter Video URL: Paste a YouTube link in the "Video URL" field. 🔗
+2. Select File Type: Choose between MP4 (video) or MP3 (audio) from the dropdown. 🎥🎵
+3. Set Quality: For MP4, select the desired video quality (e.g., 720p). 📏
+4. Choose Save Path: Browse and select a folder to save the file. 📁
+5. Download: Click the "Download" button to start the process. ⬇️
+6. Contribute: Use the "Contribute" tab to send logs or ideas. 🤝
+
+✔📝 Project Structure
+ . main.py: The main application script. 🐍
+ . img/: Contains the app icon (download.ico). 🎨
+ . ffmpeg.exe and yt-dlp.exe: Executables for video processing and downloading. ⚙️
+ . debug_log.txt: Log file stored in AppData\Local\YouTubeDownloader. 📋
+ 
+✔🌍 Languages
+ . English and Arabic are supported in the interface. 🇺🇸🇩🇿
+ . Future updates may include more languages! 🌐
+
+✔🤝 Contribute
+ Feel free to fork this repository, submit issues, or send pull requests! Your feedback is valuable! 🙌
+ 
+   [📞Contact the developer]((https://hammouda-h.devunion.dev/))
+                                                                                                   ##thank you
