@@ -28,7 +28,8 @@ This project relies on the following Python libraries:
   ```bash
   pip install customtkinter yt-dlp requests pyperclip
 📌 Note: Place ffmpeg.exe and yt-dlp.exe in the same folder as the .exe file to ensure functionality.
-✔ Download Executable📥
+
+## ✔ Download Executable📥
 For a ready-to-use version, download the latest release:
 
  [Download v2.0 exe](https://drive.google.com/file/d/1mqNXeXlHAOfUMqE3IL2-DI4ZSkqV0Y8w/view?usp=drive_link)
