@@ -27,3 +27,7 @@ This project relies on the following Python libraries:
 - Install dependencies using:
   ```bash
   pip install customtkinter yt-dlp requests
+Download Executable
+For a ready-to-use version, download the latest release:
+
+Download v1.0 
