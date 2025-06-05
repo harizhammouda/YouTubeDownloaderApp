@@ -31,7 +31,7 @@ This project relies on the following Python libraries:
 ✔ Download Executable📥
 For a ready-to-use version, download the latest release:
 
- [Download v2.0 exe]((https://drive.google.com/file/d/1mqNXeXlHAOfUMqE3IL2-DI4ZSkqV0Y8w/view?usp=drive_link))
+ [Download v2.0 exe](https://drive.google.com/file/d/1mqNXeXlHAOfUMqE3IL2-DI4ZSkqV0Y8w/view?usp=drive_link)
  
 ## 🚀 How to Use
 1. Enter Video URL: Paste a YouTube link in the "Video URL" field. 🔗
@@ -54,5 +54,5 @@ For a ready-to-use version, download the latest release:
 ## ✔🤝 Contribute
  Feel free to fork this repository, submit issues, or send pull requests! Your feedback is valuable! 🙌
  
-## [📞Contact the developer]((https://hammouda-h.devunion.dev/))
+## [📞Contact the developer](https://hammouda-h.devunion.dev/)
  ## thank you
