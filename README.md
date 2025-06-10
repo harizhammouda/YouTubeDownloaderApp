@@ -33,7 +33,9 @@ This project relies on the following Python libraries:
 For a ready-to-use version, download the latest release:
 
 [Download v2.5.exe](https://drive.google.com/file/d/1zYPZs00rzrJ53zTRCR9PkcmZl3SP7H7U/view?usp=drive_link) (the latest version)
+
 [Download v2.0.exe](https://drive.google.com/file/d/1mqNXeXlHAOfUMqE3IL2-DI4ZSkqV0Y8w/view?usp=drive_link) 
+
 [Download v1.0.exe](https://drive.google.com/file/d/1EIZymRmunrFOMOBqjdyPvmvM28rPdVJa/view?usp=drive_link)
   
 ## 🚀 How to Use
