@@ -14,7 +14,6 @@ import win11toast
 from yt_dlp import YoutubeDL
 from PIL import Image
 from tkinter import messagebox
-
 # إعداد ملف السجل في مجلد AppData
 log_file_path = os.path.join(os.path.expanduser("~"), "AppData", "Local", "YouTubeDownloader", "debug_log.txt")
 os.makedirs(os.path.dirname(log_file_path), exist_ok=True)
@@ -37,7 +36,7 @@ def sanitize_filename(filename):
 class YouTubeDownloaderApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("YouTube Downloader 2.5")
+        self.root.title("YouTube Downloader 3.0")
         # حساب الموقع لتوسيط النافذة
         screen_width = self.root.winfo_screenwidth()
         screen_height = self.root.winfo_screenheight()
@@ -61,11 +60,34 @@ class YouTubeDownloaderApp:
         self.is_paste_active = False
 
         self.settings_file = os.path.join(os.path.dirname(log_file_path), "settings.txt")
-        self.notifications_enabled = tk.BooleanVar(value=True)  # مفعل افتراضيًا
-        self.tooltip_enabled = tk.BooleanVar(value=True)  # مفعل افتراضيًا
-        self.load_settings()  # قراءة الإعدادات
+        self.notifications_enabled = tk.BooleanVar(value=True)
+        self.tooltip_enabled = tk.BooleanVar(value=True)
+        self.load_settings()
+
+        # التحقق من الفتح الأول
+        if not self.is_first_run_checked():
+            import webbrowser
+            index_path = os.path.join(exe_dir, "index", "index.html")
+            if os.path.exists(index_path):
+                webbrowser.open(f"file://{index_path}")
+            self.mark_first_run()
 
         self.create_widgets()
+        self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
+
+    def is_first_run_checked(self):
+        # التحقق مما إذا كان التطبيق قد فُتح من قبل
+        try:
+            with open(self.settings_file, "r", encoding="utf-8") as f:
+                settings = dict(line.strip().split("=", 1) for line in f if "=" in line)
+                return settings.get("first_run", "False") == "True"
+        except FileNotFoundError:
+            return False
+
+    def mark_first_run(self):
+        # وضع علامة أن التطبيق فُتح لأول مرة
+        with open(self.settings_file, "a", encoding="utf-8") as f:
+            f.write("first_run=True\n")
 
     def create_widgets(self):
         self.main_frame = ctk.CTkFrame(self.root)
@@ -75,7 +97,7 @@ class YouTubeDownloaderApp:
         self.welcome_label = ctk.CTkLabel(title_frame, text="Welcome to YouTube Downloader",
                                           font=("Arial", 20, "bold"))
         self.welcome_label.pack(pady=5)
-        self.version_label = ctk.CTkLabel(title_frame, text="Version 2.5",
+        self.version_label = ctk.CTkLabel(title_frame, text="Version 3.0",
                                           text_color="gray", font=("Arial", 15))
         self.version_label.pack()
         title_frame.pack(fill="x")
@@ -84,11 +106,17 @@ class YouTubeDownloaderApp:
         self.download_tab = self.notebook.add("Download")
         self.about_tab = self.notebook.add("About")
         self.contribute_tab = self.notebook.add("Contribute")
+        self.update_tab = self.notebook.add("Update")  # إضافة تبويب Update
         self.notebook.pack(fill="both", expand=True, pady=10)
 
         self.setup_download_tab()
         self.setup_about_tab()
         self.setup_contribute_tab()
+
+        # إضافة محتوى التحديث من الملف الجديد
+        from update_checker import create_update_content
+        update_content = create_update_content(self.update_tab)
+        update_content.pack(fill="both", expand=True)
 
     def setup_download_tab(self):
         self.url_label = ctk.CTkLabel(self.download_tab, text="Video URL:", font=("Arial", 15))
@@ -100,7 +128,7 @@ class YouTubeDownloaderApp:
                                           command=self.reset_app)
         self.reset_button.place(x=800, y=0)
         self.create_tooltip(self.reset_button,
-                            "Click to reset the app for a new video link or to fix errors.")
+                            "Click to reset the app for a \n new video link or to fix errors.")
 
         self.url_frame = ctk.CTkFrame(self.download_tab, fg_color="transparent")
         self.url_entry = ctk.CTkEntry(self.url_frame, width=460, height=40, font=("Arial", 15),
@@ -204,6 +232,17 @@ class YouTubeDownloaderApp:
         settings_frame = ctk.CTkFrame(about_frame, fg_color="transparent")
         settings_frame.pack(pady=10)
 
+        def open_instructions():
+            import webbrowser
+            exe_dir = os.path.dirname(os.path.realpath(sys.argv[0]))
+            index_path = os.path.join(exe_dir, "index", "index.html")
+            if os.path.exists(index_path):
+                webbrowser.open(f"file://{index_path}")
+
+        instructions_button = ctk.CTkButton(about_frame, text="View Instructions - عرض التعليمات",
+                                            command=open_instructions , font=("Arial", 20))
+        instructions_button.pack(pady=10)
+
         self.notification_check = ctk.CTkCheckBox(settings_frame, text="Enable Notifications",
                                                   variable=self.notifications_enabled,
                                                   command=self.save_settings,
@@ -217,7 +256,7 @@ class YouTubeDownloaderApp:
                                              font=("Arial", 15),
                                              corner_radius=6)
         self.tooltip_check.pack(side="left", padx=20)
-        self.rights_label = ctk.CTkLabel(about_frame, text="\n\n\n\n\n\n\n\n All rights reserved by developer Hariz Hammouda and contributor AI Grok\n© 2025",
+        self.rights_label = ctk.CTkLabel(about_frame, text="\n\n\n\n\n All rights reserved by developer Hariz Hammouda and contributor AI Grok\n© 2025",
                                          font=("Arial", 15))
         self.rights_label.pack(pady=10)
 
@@ -615,6 +654,9 @@ class YouTubeDownloaderApp:
                 if process.poll() is not None:
                     break
                 time.sleep(0.1)
+                if not self.root.winfo_exists():  # تحقق إذا كانت النافذة لا تزال موجودة
+                    process.terminate()
+                    break
 
             stdout, stderr = process.communicate()
             if stdout:
@@ -687,6 +729,47 @@ class YouTubeDownloaderApp:
         self.download_process = None
         self.enable_fields()
         log_message("Application state reset.")
+
+        if self.download_process and self.download_process.poll() is None:
+            self.download_process.terminate()
+            try:
+                self.download_process.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                self.download_process.kill()
+
+    def on_closing(self):
+        if self.is_downloading:
+            response = messagebox.askyesno(
+                "Warning",
+                "Download is in progress. Do you want to close the application?",
+                icon="warning",
+                parent=self.root
+            )
+            if response:  # إذا اختير "Yes"
+                if hasattr(self, 'download_thread') and self.download_thread and self.download_thread.is_alive():
+                    self.download_thread.join(timeout=1)
+                if hasattr(self, 'download_process') and self.download_process and self.download_process.poll() is None:
+                    self.download_process.terminate()
+                    try:
+                        self.download_process.wait(timeout=1)
+                    except subprocess.TimeoutExpired:
+                        self.download_process.kill()
+                self.reset_state()
+                self.root.destroy()
+            # إذا اختير "No"، لا نفعل شيئًا والنافذة تختفي تلقائيًا
+        else:  # إذا لم يكن هناك تحميل
+            if hasattr(self, 'download_thread') and self.download_thread and self.download_thread.is_alive():
+                self.download_thread.join(timeout=1)
+            if hasattr(self, 'download_process') and self.download_process and self.download_process.poll() is None:
+                self.download_process.terminate()
+                try:
+                    self.download_process.wait(timeout=1)
+                except subprocess.TimeoutExpired:
+                    self.download_process.kill()
+            self.reset_state()
+            self.root.destroy()
+
+
 
     def send_debug_log(self):
         if not os.path.exists(log_file_path):
@@ -783,11 +866,18 @@ class YouTubeDownloaderApp:
         if not self.tooltip_enabled.get():
             return
         tooltip = None
+        after_id = None
 
         def show_tooltip(event):
+            nonlocal tooltip, after_id
+            if after_id:
+                widget.after_cancel(after_id)  # إلغاء أي تأخير سابق
+            after_id = widget.after(1000, lambda: _show_tooltip(widget, text))  # تأخير 2 ثانية
+
+        def _show_tooltip(widget, text):
             nonlocal tooltip
-            x = widget.winfo_rootx() - 725
-            y = widget.winfo_rooty() + widget.winfo_height() + 680
+            x = widget.winfo_rootx() - 110
+            y = widget.winfo_rooty() + widget.winfo_height() + 5
             tooltip = tk.Toplevel(widget)
             tooltip.wm_overrideredirect(True)
             tooltip.wm_geometry(f"+{x}+{y}")
@@ -796,9 +886,13 @@ class YouTubeDownloaderApp:
                              borderwidth=0, padx=10, pady=5)
             label.pack()
             tooltip.configure(bg="#4d4d4d")
+            # إخفاء التعليق بعد 5 ثواني
+            widget.after(5000, lambda: hide_tooltip(None) if tooltip else None)
 
         def hide_tooltip(event):
-            nonlocal tooltip
+            nonlocal tooltip, after_id
+            if after_id:
+                widget.after_cancel(after_id)  # إلغاء التأخير إذا تحرك المؤشر
             if tooltip and hasattr(tooltip, 'destroy'):
                 tooltip.destroy()
                 tooltip = None
@@ -818,12 +912,23 @@ class YouTubeDownloaderApp:
     def show_windows_notification(self):
         if not self.notifications_enabled.get():
             return
-        win11toast.toast(
-            title="Download Complete!",
-            body=f"Downloaded:\n{os.path.basename(self.downloaded_file)}",
-            duration="short",
-            app_id="YouTube Downloader"
-        )
+        exe_dir = os.path.dirname(os.path.realpath(sys.argv[0]))
+        icon_path = os.path.join(exe_dir, "img", "download.ico")
+        if os.path.exists(icon_path):
+            win11toast.toast(
+                title="Download Complete!",
+                body=f"Downloaded:\n{os.path.basename(self.downloaded_file)}",
+                duration="short",
+                app_id="YouTube Downloader",
+                icon=icon_path  # إضافة الأيقونة الصغيرة
+            )
+        else:
+            win11toast.toast(
+                title="Download Complete!",
+                body=f"Downloaded:\n{os.path.basename(self.downloaded_file)}",
+                duration="short",
+                app_id="YouTube Downloader"
+            )  # بدون أيقونة إذا لم يوجد الملف
 
 if __name__ == "__main__":
     root = ctk.CTk()

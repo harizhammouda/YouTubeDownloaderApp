@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guide to Downloading YouTube Videos</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #121212;
+      color: #ffffff;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 0;
+      background-color: #1e1e1e;
+      border-radius: 20px;
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #0acaff;
+    }
+
+    .section {
+      background-color: #1e1e1e;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .section h2 {
+      font-size: 1.8rem;
+      color: #ff6f61;
+      margin-bottom: 15px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .section h2::after {
+      content: '▼';
+      font-size: 1rem;
+      transition: transform 0.3s;
+    }
+
+    .section h2.active::after {
+      transform: rotate(180deg);
+    }
+
+    .content {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 15px;
+      background-color: #252525;
+      border-radius: 10px;
+      transition: max-height 0.5s ease, padding 0.5s ease;
+    }
+
+    .content.show {
+      padding: 15px;
+    }
+
+    .step {
+      margin-bottom: 20px;
+    }
+
+    .step img {
+      max-width: 100%;
+      max-height: 400px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 10px;
+      margin-top: 10px;
+      display: block;
+      cursor: pointer;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-content {
+      position: relative;
+      max-width: 80%;
+      max-height: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content img {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      color: #ff6f61;
+      font-size: 2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .modal-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #ff6f61;
+      font-size: 2rem;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 50%;
+    }
+
+    .modal-nav.prev {
+      left: 10px;
+    }
+
+    .modal-nav.next {
+      right: 10px;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .section h2 {
+        font-size: 1.5rem;
+      }
+
+      .step img {
+        max-height: 150px;
+      }
+
+      .modal-content img {
+        max-height: 70vh;
+      }
+
+      .modal-close {
+        top: -20px;
+        right: -20px;
+        font-size: 1.5rem;
+      }
+
+      .modal-nav {
+        font-size: 1.5rem;
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>YouTube Downloader Program Help Center</h1>
+    </header>
+
+    <div class="section">
+      <h2>How to Download a Video or Audio from YouTube ?</h2>
+      <div class="content">
+        <div class="step">
+          <p>1. Open YouTube and search for the video you want to download. <br>  Copy the video URL from the address bar or via the share button.</p>
+          <img src="d1.5.jpg" alt="Search for Video" loading="eager">
+        </div>
+        <div class="step">
+          <p>2. Click on "Paste" and the link will be pasted directly.</p>
+          <img src="d2.jpg" alt="Copy Video URL" loading="eager">
+        </div>
+        <div class="step">
+          <p>3. Wait until it finishes verifying the video link.</p>
+          <img src="d3.jpg" alt="Paste URL" loading="eager">
+        </div>
+        <div class="step">
+          <p>4. After verification, the video name appears here. The program is now ready to download the video.</p>
+          <img src="d4.jpg" alt="Choose Quality" loading="eager">
+        </div>
+        <div class="step">
+          <p>5. After that, select the save path and download type (MP4, MP3, video, or audio). If it's a video,<br>   choose the download resolution, then click "Download" to start.</p>
+          <img src="d5.jpg" alt="Download Complete" loading="eager">
+        </div>
+        <div class="step">
+          <p>6. Congratulations, the download is complete! </p>
+          <img src="d6.jpg" alt="Download Complete" loading="eager">
+          <img src="d7.jpg" alt="Download Complete" loading="eager">
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>What is the function of the reload icon ?</h2>
+      <div class="content">
+        <div class="step">
+          <p>The program is under development, so it is likely and normal for errors and glitches to appear. <br> Therefore, the function of this button is to reset the program from the beginning.<br> Also, suppose you want to download again: paste the link and wait, and the video title will appear.<br> In this case, if you want to paste another link, clear it with the "X" icon and paste a new link. <br>However, if you continue to modify the download settings here, you need to click the reload icon to paste a new link.<br> This is one of the issues that the reload icon resolves.</p>
+          <img src="t1.jpg" alt="Copy Playlist URL" loading="eager">
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>About Section</h2>
+      <div class="content">
+        <div class="step">
+          <p>It includes a simple download method with the option to enable or disable Windows notifications,<br> along with instructions displayed in the reload icon.</p>
+          <img src="t2.jpg" alt="Copy Video URL" loading="eager">
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Contribution Section</h2>
+      <div class="content">
+        <div class="step">
+          <p>The most important section for the application developer. <br>  As shown, the first button sends the error log. If you encounter an error or glitch in the program,<br> for example, click the button to send the log to me so I can fix the error. <br>Also, if you have suggestions, enter them in the provided field and click "Send."<br> If you want to contact the developer, it will direct you to their dedicated website.</p>
+          <img src="t3.jpg" alt="Copy Video URL" loading="eager">
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Update Section</h2>
+      <div class="content">
+        <div class="step">
+          <p>"An important section for you to update the program. If you don't update the program, the download won't work properly. <br>   Just press the button, check the latest version, and compare it with the version you have. All versions are available on GitHub.</p>
+          <img src="t4.jpg" alt="Copy Video URL" loading="eager">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="imageModal">
+    <div class="modal-content">
+      <button class="modal-close">X</button>
+      <span class="modal-nav prev">❮</span>
+      <img src="" alt="Enlarged Image">
+      <span class="modal-nav next">❯</span>
+    </div>
+  </div>
+
+  <script>
+    // Accordion functionality
+    document.querySelectorAll('.section h2').forEach(header => {
+      header.addEventListener('click', () => {
+        const content = header.nextElementSibling;
+        const isVisible = content.classList.contains('show');
+
+        document.querySelectorAll('.content').forEach(c => {
+          if (c !== content) {
+            c.classList.remove('show');
+            c.style.maxHeight = '0px';
+          }
+        });
+        document.querySelectorAll('.section h2').forEach(h => {
+          if (h !== header) h.classList.remove('active');
+        });
+
+        if (!isVisible) {
+          content.classList.add('show');
+          content.style.maxHeight = content.scrollHeight + 'px';
+          header.classList.add('active');
+        } else {
+          content.classList.remove('show');
+          content.style.maxHeight = '0px';
+          header.classList.remove('active');
+        }
+      });
+    });
+
+    // Image modal functionality
+    const modal = document.getElementById('imageModal');
+    const modalImg = modal.querySelector('img');
+    const modalClose = modal.querySelector('.modal-close');
+    const modalPrev = modal.querySelector('.modal-nav.prev');
+    const modalNext = modal.querySelector('.modal-nav.next');
+    let currentImages = [];
+    let currentIndex = 0;
+
+    document.querySelectorAll('.step img').forEach(img => {
+      img.addEventListener('click', () => {
+        const section = img.closest('.section');
+        currentImages = Array.from(section.querySelectorAll('.step img'));
+        currentIndex = currentImages.indexOf(img);
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+        modal.classList.add('show');
+      });
+    });
+
+    modalClose.addEventListener('click', () => {
+      modal.classList.remove('show');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('show');
+      }
+    });
+
+    modalPrev.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+      modalImg.src = currentImages[currentIndex].src;
+      modalImg.alt = currentImages[currentIndex].alt;
+    });
+
+    modalNext.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % currentImages.length;
+      modalImg.src = currentImages[currentIndex].src;
+      modalImg.alt = currentImages[currentIndex].alt;
+    });
+  </script>
+</body>
+</html>
