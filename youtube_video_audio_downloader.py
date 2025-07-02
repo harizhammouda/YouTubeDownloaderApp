@@ -36,7 +36,7 @@ def sanitize_filename(filename):
 class YouTubeDownloaderApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("YouTube Downloader 3.0")
+        self.root.title("YouTube Downloader 3.1")
         # حساب الموقع لتوسيط النافذة
         screen_width = self.root.winfo_screenwidth()
         screen_height = self.root.winfo_screenheight()
@@ -97,7 +97,7 @@ class YouTubeDownloaderApp:
         self.welcome_label = ctk.CTkLabel(title_frame, text="Welcome to YouTube Downloader",
                                           font=("Arial", 20, "bold"))
         self.welcome_label.pack(pady=5)
-        self.version_label = ctk.CTkLabel(title_frame, text="Version 3.0",
+        self.version_label = ctk.CTkLabel(title_frame, text="Version 3.1",
                                           text_color="gray", font=("Arial", 15))
         self.version_label.pack()
         title_frame.pack(fill="x")

@@ -24,7 +24,7 @@ def create_update_content(root):
     arabic_label.pack(pady=20)
 
     # الإصدار الحالي
-    version_label = ctk.CTkLabel(main_frame, text="Current Version: 3.0 | Check for the latest version \n الإصدار الحالي: 3.0 | تحقق من أحدث إصدار",
+    version_label = ctk.CTkLabel(main_frame, text="Current Version: 3.1 | Check for the latest version \n الإصدار الحالي: 3.1 | تحقق من أحدث إصدار",
                                  font=("Arial", 16), text_color="gray")
     version_label.pack(pady=20)
 
