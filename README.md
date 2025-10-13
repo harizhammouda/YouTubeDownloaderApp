@@ -32,7 +32,7 @@ This project relies on the following Python libraries:
 ## ✔ Download Executable📥
 For a ready-to-use version, download the latest release:
 
-[Download v3.9.exe](https://drive.google.com/file/d/1msd0qAzgMTYJu5w_fg2KvHf-WUY7bIl7/view?usp=drive_link](https://drive.google.com/file/d/1msd0qAzgMTYJu5w_fg2KvHf-WUY7bIl7/view?usp=drive_link)  (the latest version and Library update)
+[Download v3.9.exe](https://drive.google.com/file/d/1msd0qAzgMTYJu5w_fg2KvHf-WUY7bIl7/view?usp=drive_link)  (the latest version and Library update)
 
 [Download v3.1.exe](https://drive.google.com/file/d/15k4iZS4UimPHnQJ0Z8Ebrdf4AviDyjPq/view?usp=sharing)  
 
